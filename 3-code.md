@@ -227,7 +227,7 @@ your-repo/
 ├── about.md        ← ❌ 직접 들어가야 접근됨 (/about)
 ├── tips.md         ← ❌ 직접 들어가야 접근됨 (/tips)
 
-* 따라서 `[링크](/about)`으로 index파일에 모으기
+* 따라서 `[팁](tips.md)`으로 index파일에 모으기
 
 step 2. 레지스토리 공개로 전환
 * github - ubuntuset - settings - 공개로 전환

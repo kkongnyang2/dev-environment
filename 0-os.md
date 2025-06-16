@@ -1,12 +1,7 @@
-## Ubuntu-22.04-desktop-amd64.iso를 알아보자
+## Ubuntu-22.04-desktop-amd64.iso 공부
 
 ### 목표: OS의 이해
 작성자: kkongnyang2 작성일: 2025-06-04
-
----
-### 0> 환경 점검
-
-이론 설명임
 
 ---
 ### 1> 컴퓨터의 구성 요소

@@ -1,4 +1,4 @@
-## Ubuntu-22.04-desktop-amd64에서 keyboard 커스터마이징
+## Ubuntu-22.04-desktop 키보드 커스터마이징
 
 ### 목표: I/O 장치의 이해
 작성자: kkongnyang2 작성일: 2025-06-04

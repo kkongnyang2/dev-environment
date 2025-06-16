@@ -1,6 +1,6 @@
-## Ubuntu-22.04-desktop-amd64.iso를 설치해보자
+## Ubuntu-22.04-desktop-amd64.iso 설치 가이드
 
-### 목표: 듀얼 OS 설치 실습
+### 목표: 듀얼 OS 설치
 작성자: kkongnyang2 작성일: 2025-06-04
 
 ---

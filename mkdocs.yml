@@ -1,0 +1,12 @@
+site_name: dev-environment
+theme:
+  name: material
+nav:
+  - 이론: 0-os.md
+  - setup: 1-setup.md
+  - keyboard: 2-keyboard.md
+  - code: 3-code.md
+site_dir: site          # <- 기본값이지만 명시해 둡니다
+markdown_extensions:
+  - toc
+  - codehilite
