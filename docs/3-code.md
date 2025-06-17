@@ -198,7 +198,7 @@ ubuntu-set/
 
 ```bash
 ~$ git add .
-~$ git commit -m "처음 업로드"
+~$ git commit -m "2025.06.04.v1"
 ~$ git push -u origin main
 ```
 
