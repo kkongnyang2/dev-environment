@@ -194,12 +194,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-os/" class="md-nav__link">
+      <a href="../0-study/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    이론
+    study
     
   </span>
   
@@ -493,136 +493,115 @@
 
   <h1>keyboard</h1>
 
-<h2 id="ubuntu-2204-desktop">Ubuntu-22.04-desktop 키보드 커스터마이징</h2>
-<h3 id="io">목표: I/O 장치의 이해</h3>
+<h2 id="ubuntu-2204-desktop">Ubuntu-22.04-desktop 키보드 커스터마이징<a class="headerlink" href="#ubuntu-2204-desktop" title="Permanent link">&para;</a></h2>
+<h3 id="io">목표: I/O 장치의 이해<a class="headerlink" href="#io" title="Permanent link">&para;</a></h3>
 <p>작성자: kkongnyang2 작성일: 2025-06-04</p>
 <hr />
-<h3 id="0">0&gt; 환경 점검</h3>
-<p>하드웨어: 삼성 노트북
-├─cpu: i5-10th amd64
-├─ram: 8GB
-└─ssd: 256GB
-운영체제: ubuntu-22.04.5-desktop-amd64
+<h3 id="0">0&gt; 환경 점검<a class="headerlink" href="#0" title="Permanent link">&para;</a></h3>
+<p>하드웨어: 삼성 노트북<br />
+├─cpu: i5-10th amd64<br />
+├─ram: 8GB<br />
+└─ssd: 256GB<br />
+운영체제: ubuntu-22.04.5-desktop-amd64<br />
 외부 저장장치: 없음</p>
 <hr />
-<h3 id="1">1&gt; 입력기 시스템 어떻게 되어있나요</h3>
-<p>[1] 하드웨어 | 키보드 자체
- ↓
-[2] 커널 계층 | 키 입력 처리 (/dev/input/event로 전달) | libinput
- ↓
-[3] 레이아웃 계층 | keycode → keysym 변환 | XKB
- ↓
-[4] 입력기 프레임워크 | 문자 조합 | IBus, Fcitx
- ↓
-[5] 입력기 엔진 | 각 언어별 로직 | ibus-hangul
- ↓
-[6] 디스플레이 서버 | 최종 입출력 전달 백엔드(무대) | Wayland, X11
- ↓
+<h3 id="1">1&gt; 입력기 시스템 어떻게 되어있나요<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>[1] 하드웨어 | 키보드 자체<br />
+ ↓<br />
+[2] 커널 계층 | 키 입력 처리 (/dev/input/event로 전달) | libinput<br />
+ ↓<br />
+[3] 레이아웃 계층 | keycode → keysym 변환 | XKB<br />
+ ↓<br />
+[4] 입력기 프레임워크 | 문자 조합 | IBus, Fcitx<br />
+ ↓<br />
+[5] 입력기 엔진 | 각 언어별 로직 | ibus-hangul<br />
+ ↓<br />
+[6] 디스플레이 서버 | 최종 입출력 전달 백엔드(무대) | Wayland, X11<br />
+ ↓<br />
 [7] 데스크톱 환경 | 화면 구성 등 사용자 UI(겉모습) | Gnome</p>
 <ul>
 <li>gnome은 마스터 컨트롤러 같은 존재. 각 애들한테 명령을 내림.</li>
 <li>ibus는 그저 입력기 프로그램이기 때문에 gnome의 요청없이 그 상위계층에 입출력을 전달할 수가 없다.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$XDG_SESSION_TYPE</span><span class="w">         </span><span class="c1">#디스플레이 서버 확인</span>
+<p><div class="highlight"><pre><span></span><code>~$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$XDG_SESSION_TYPE</span><span class="w">         </span><span class="c1">#디스플레이 서버 확인</span>
 ~$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$XMODIFIERS</span><span class="w">               </span><span class="c1">#프레임워크 확인</span>
 ~$<span class="w"> </span>ibus<span class="w"> </span>list-engine<span class="w">               </span><span class="c1">#엔진 종류 확인</span>
 ~$<span class="w"> </span>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;ibus|fcitx|uim&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>grep<span class="w">   </span><span class="c1">#입력기 데몬 확인</span>
 ~$<span class="w"> </span>xev<span class="w">                            </span><span class="c1">#키 매핑 확인</span>
 ~$<span class="w"> </span>sudo<span class="w"> </span>libinput<span class="w"> </span>debug-events<span class="w">     </span><span class="c1">#입력 흐름 확인</span>
-</code></pre></div>
-
-<ul>
-<li><code>ps aux</code>: 모든 사용자와 프로세스 출력</li>
-<li><code>grep</code>: 찾기</li>
-<li><code>-E</code>: 또는</li>
-<li><code>-v</code>: 제외</li>
-</ul>
+</code></pre></div><br />
+* <code>ps aux</code>: 모든 사용자와 프로세스 출력<br />
+* <code>grep</code>: 찾기<br />
+* <code>-E</code>: 또는<br />
+* <code>-v</code>: 제외</p>
 <hr />
-<h3 id="2-ibus-hangul">2&gt; ibus-hangul 설치</h3>
-<p>step 1. 설치</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ibus-hangul
-</code></pre></div>
-
-<p>step 2. ibus 재시작하기</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>ibus<span class="w"> </span>restart
+<h3 id="2-ibus-hangul">2&gt; ibus-hangul 설치<a class="headerlink" href="#2-ibus-hangul" title="Permanent link">&para;</a></h3>
+<p>step 1. 설치<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ibus-hangul
+</code></pre></div><br />
+step 2. ibus 재시작하기<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>ibus<span class="w"> </span>restart
 ~$<span class="w"> </span>ibus-daemon<span class="w"> </span>-drx
-</code></pre></div>
-
-<ul>
-<li><code>-d</code>: 백그라운드 데몬으로 실행 <code>-r</code>: 리셋 <code>-x</code>: X 모드로 실행</li>
-</ul>
-<p>step 3. ibus-hangul 설치 여부 확인</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ibus-hangul
-</code></pre></div>
-
-<ul>
-<li><code>dpkg -l</code>: 현재 설치된 모든 패키지 목록</li>
-<li><code>grep</code>: 검색</li>
-</ul>
-<p>step 4. ibus 목록 확인하기:</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>ibus<span class="w"> </span>list-engine
-</code></pre></div>
-
-<p>step 5. Gnome 에서 추가</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>gnome-control-center<span class="w"> </span>keyboard
+</code></pre></div><br />
+* <code>-d</code>: 백그라운드 데몬으로 실행 <code>-r</code>: 리셋 <code>-x</code>: X 모드로 실행</p>
+<p>step 3. ibus-hangul 설치 여부 확인<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ibus-hangul
+</code></pre></div><br />
+* <code>dpkg -l</code>: 현재 설치된 모든 패키지 목록<br />
+* <code>grep</code>: 검색</p>
+<p>step 4. ibus 목록 확인하기:<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>ibus<span class="w"> </span>list-engine
+</code></pre></div><br />
+step 5. Gnome 에서 추가<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>gnome-control-center<span class="w"> </span>keyboard
 입력기<span class="w"> </span>전환<span class="w"> </span>키<span class="w"> </span>삭제
 input<span class="w"> </span>sources에서<span class="w"> </span>기본<span class="w"> </span>영어<span class="w"> </span>키보드<span class="w"> </span>삭제
 input<span class="w"> </span>sources에서<span class="w"> </span>ibus-hangul<span class="w"> </span>입력기<span class="w"> </span>추가<span class="w"> </span><span class="o">(</span>안에<span class="w"> </span>영어<span class="w"> </span>한글<span class="w"> </span>다잇음<span class="o">)</span>
-</code></pre></div>
-
-<p>step 6. ibus 에도 등록</p>
-<p>Gnome에 이미 ibus-hangul 엔진을 추가했기에 하지 않아도 작동하지만, 안정성을 위해.</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>ibus-setup
+</code></pre></div><br />
+step 6. ibus 에도 등록</p>
+<p>Gnome에 이미 ibus-hangul 엔진을 추가했기에 하지 않아도 작동하지만, 안정성을 위해.<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>ibus-setup
 입력기<span class="w"> </span>전환<span class="w"> </span>키<span class="w"> </span>삭제
 ibus-hangul<span class="w"> </span>추가
 한영<span class="w"> </span>토글<span class="w"> </span>키<span class="w"> </span>hangul키로<span class="w"> </span>설정
-</code></pre></div>
-
+</code></pre></div></p>
 <blockquote>
-<p>⚠️ gnome 영향안받고 ibus만 입력기로 쓸거라면:</p>
-</blockquote>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;GTK_IM_MODULE=ibus</span>
+<p>⚠️ gnome 영향안받고 ibus만 입력기로 쓸거라면:<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;GTK_IM_MODULE=ibus</span>
 <span class="s1">~$ QT_IM_MODULE=ibus</span>
 <span class="s1">~$ XMODIFIERS=@im=ibus&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.profile
-</code></pre></div>
-
+</code></pre></div></p>
+</blockquote>
 <hr />
-<h3 id="3">3&gt; 키 매핑 변경</h3>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>sudo<span class="w"> </span>gedit<span class="w"> </span>/usr/share/X11/xkb/keycodes/evdev
+<h3 id="3">3&gt; 키 매핑 변경<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>sudo<span class="w"> </span>gedit<span class="w"> </span>/usr/share/X11/xkb/keycodes/evdev
 </code></pre></div>
-
-<p>원본:</p>
-<div class="codehilite"><pre><span></span><code>&lt;RALT&gt; = 108;
+<p>원본:<br />
+<div class="highlight"><pre><span></span><code>&lt;RALT&gt; = 108;
 &lt;HNGL&gt; = 130;
-</code></pre></div>
-
-<p>수정:</p>
-<div class="codehilite"><pre><span></span><code>&lt;HNGL&gt; = 108;
-</code></pre></div>
-
+</code></pre></div></p>
+<p>수정:<br />
+<div class="highlight"><pre><span></span><code>&lt;HNGL&gt; = 108;
+</code></pre></div></p>
 <ul>
 <li>108번 하드웨어 키를 <code>HNGL</code>로 지정함으로써, 우측 ALT를 한영키로 대체</li>
 <li>원본은 전부 before로 표기해두니 필요하면 ctrl+f로 찾아라</li>
 </ul>
 <hr />
-<h3 id="4-zkeycode-52">4&gt; z(keycode 52) 저수준 차단하기</h3>
-<p>기존 키맵 복사:</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>/usr/share/X11/xkb/symbols/us<span class="w"> </span>~/.XkbSymbols_us
+<h3 id="4-zkeycode-52">4&gt; z(keycode 52) 저수준 차단하기<a class="headerlink" href="#4-zkeycode-52" title="Permanent link">&para;</a></h3>
+<p>기존 키맵 복사:<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>/usr/share/X11/xkb/symbols/us<span class="w"> </span>~/.XkbSymbols_us
 ~$<span class="w"> </span>gedit<span class="w"> </span>~/.XkbSymbols_us
-</code></pre></div>
-
-<p>원본:</p>
-<div class="codehilite"><pre><span></span><code>key &lt;AB03&gt; { [ z, Z ] };;
-</code></pre></div>
-
-<p>수정:</p>
-<div class="codehilite"><pre><span></span><code>key &lt;AB03&gt; { [ NoSymbol, NoSymbol ] };
-</code></pre></div>
-
-<p>반영:</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>setxkbmap<span class="w"> </span>-I<span class="nv">$HOME</span><span class="w"> </span>-layout<span class="w"> </span>us
-</code></pre></div>
-
+</code></pre></div></p>
+<p>원본:<br />
+<div class="highlight"><pre><span></span><code>key &lt;AB03&gt; { [ z, Z ] };;
+</code></pre></div></p>
+<p>수정:<br />
+<div class="highlight"><pre><span></span><code>key &lt;AB03&gt; { [ NoSymbol, NoSymbol ] };
+</code></pre></div></p>
+<p>반영:<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>setxkbmap<span class="w"> </span>-I<span class="nv">$HOME</span><span class="w"> </span>-layout<span class="w"> </span>us
+</code></pre></div></p>
 <ul>
 <li><code>setxkbmap</code>: X 맵 설정</li>
 <li><code>-I$HOME</code> : 커스텀 심볼 파일을 홈 디렉토리에서 우선 찾게함</li>

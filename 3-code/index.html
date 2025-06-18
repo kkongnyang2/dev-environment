@@ -192,12 +192,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-os/" class="md-nav__link">
+      <a href="../0-study/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    이론
+    study
     
   </span>
   
@@ -581,28 +581,27 @@
 
   <h1>code</h1>
 
-<h2 id="vscode-11002-github">Vscode 1.100.2 설치와 Github 연결</h2>
-<h3 id="_1">목표: 코딩 환경 세팅</h3>
+<h2 id="vscode-11002-github">Vscode 1.100.2 설치와 Github 연결<a class="headerlink" href="#vscode-11002-github" title="Permanent link">&para;</a></h2>
+<h3 id="_1">목표: 코딩 환경 세팅<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p>작성자: kkongnyang2 작성일: 2025-06-04</p>
 <hr />
-<h3 id="0">0&gt; 환경 점검</h3>
-<p>하드웨어: 삼성 노트북
-├─cpu: i5-10th amd64
-├─ram: 8GB
-└─ssd: 256GB
-운영체제: ubuntu-22.04.5-desktop-amd64
+<h3 id="0">0&gt; 환경 점검<a class="headerlink" href="#0" title="Permanent link">&para;</a></h3>
+<p>하드웨어: 삼성 노트북<br />
+├─cpu: i5-10th amd64<br />
+├─ram: 8GB<br />
+└─ssd: 256GB<br />
+운영체제: ubuntu-22.04.5-desktop-amd64<br />
 외부 저장장치: 없음</p>
 <hr />
-<h3 id="1-vscode">1&gt; vscode 설치</h3>
+<h3 id="1-vscode">1&gt; vscode 설치<a class="headerlink" href="#1-vscode" title="Permanent link">&para;</a></h3>
 <ul>
 <li>snap으로 설치하면 ibus와의 호환 이슈. deb방식으로 설치 필요.</li>
 </ul>
-<p>step 1. apt에 vscode 등록</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>wget<span class="w"> </span>-qO-<span class="w"> </span>https://packages.microsoft.com/keys/microsoft.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>&gt;<span class="w"> </span>packages.microsoft.gpg
+<p>step 1. apt에 vscode 등록<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>wget<span class="w"> </span>-qO-<span class="w"> </span>https://packages.microsoft.com/keys/microsoft.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>&gt;<span class="w"> </span>packages.microsoft.gpg
 ~$<span class="w"> </span>sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">644</span><span class="w"> </span>packages.microsoft.gpg<span class="w"> </span>/etc/apt/trusted.gpg.d/
 ~$<span class="w"> </span>sudo<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo &quot;deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main&quot; &gt; /etc/apt/sources.list.d/vscode.list&#39;</span>
-</code></pre></div>
-
+</code></pre></div></p>
 <p>"vscode 인증키와 링크 받아와서 내 apt에 등록"</p>
 <ul>
 <li><code>wget</code>: 인터넷에서 파일을 다운로드하는 도구</li>
@@ -624,67 +623,57 @@
 <li><code>/etc/apt/sources.list.d/vscode.list</code> : apt 소스 리스트</li>
 <li>즉 세번째 코드는 링크를 apt 소스 리스트에 등록해라.</li>
 </ul>
-<p>step 2. vs code 설치</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+<p>step 2. vs code 설치<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>update
 ~$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>code
-</code></pre></div>
-
-<p>step 3. 설치 위치 확인</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>which<span class="w"> </span>code
+</code></pre></div></p>
+<p>step 3. 설치 위치 확인<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>which<span class="w"> </span>code
 /usr/bin/code<span class="w">                 </span><span class="c1">#deb형식으로 잘 깔림</span>
-</code></pre></div>
-
-<p>step 4. 실행</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>code
-</code></pre></div>
-
-<ul>
-<li>code는 그냥 런쳐실행, code .은 현재 폴더 실행, code ~/..는 해당 폴더를 프로젝트로 열기</li>
-</ul>
+</code></pre></div></p>
+<p>step 4. 실행<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>code
+</code></pre></div><br />
+* code는 그냥 런쳐실행, code .은 현재 폴더 실행, code ~/..는 해당 폴더를 프로젝트로 열기</p>
 <hr />
-<h3 id="2-vscode">2&gt; vscode 폴더 이해</h3>
-<p>my-project/
-├── .vscode/
-│   ├── settings.json      ← 설정
-│   ├── launch.json        ← 디버깅 설정
-│   ├── tasks.json         ← 자동실행 설정
-│   └── extensions.json    ← 추천 확장 목록
-├── index.js
+<h3 id="2-vscode">2&gt; vscode 폴더 이해<a class="headerlink" href="#2-vscode" title="Permanent link">&para;</a></h3>
+<p>my-project/<br />
+├── .vscode/<br />
+│   ├── settings.json      ← 설정<br />
+│   ├── launch.json        ← 디버깅 설정<br />
+│   ├── tasks.json         ← 자동실행 설정<br />
+│   └── extensions.json    ← 추천 확장 목록<br />
+├── index.js<br />
 └── README.md</p>
 <hr />
-<h3 id="3">3&gt; 워크스페이스 파일 이해</h3>
-<p>my-project.code-workspace  ← 여러 폴더 묶는 워크스페이스 파일 (선택적)
-{
-  "folders": [
-    { "path": "frontend" },
-    { "path": "backend" }
-  ],
-  "settings": {
-    "editor.tabSize": 2
-  }
+<h3 id="3">3&gt; 워크스페이스 파일 이해<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>my-project.code-workspace  ← 여러 폴더 묶는 워크스페이스 파일 (선택적)<br />
+{<br />
+  "folders": [<br />
+    { "path": "frontend" },<br />
+    { "path": "backend" }<br />
+  ],<br />
+  "settings": {<br />
+    "editor.tabSize": 2<br />
+  }<br />
 }</p>
 <hr />
-<h3 id="4">4&gt; 깃 설치</h3>
-<p>step 1. git 설치</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git
-</code></pre></div>
-
-<p>step 2. 사용자 정보 입력</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;kkongnyang2&quot;</span>
+<h3 id="4">4&gt; 깃 설치<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>step 1. git 설치<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git
+</code></pre></div></p>
+<p>step 2. 사용자 정보 입력<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;kkongnyang2&quot;</span>
 ~$<span class="w"> </span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;i.kkongnyang2@gmail.com&quot;</span>
-</code></pre></div>
-
-<ul>
-<li><code>config</code> : git의 설정 정보 수정</li>
-<li><code>--global</code> : 모든 git 저장소에 적용</li>
-<li><code>user.name</code> : 커밋할때 적히는 작성자 이름</li>
-</ul>
+</code></pre></div><br />
+* <code>config</code> : git의 설정 정보 수정<br />
+* <code>--global</code> : 모든 git 저장소에 적용<br />
+* <code>user.name</code> : 커밋할때 적히는 작성자 이름</p>
 <hr />
-<h3 id="5">5&gt; 깃허브 연결</h3>
-<p>step 1. ssh 키 생성</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;i.kkongnyang2@gmail.com&quot;</span>
-</code></pre></div>
-
+<h3 id="5">5&gt; 깃허브 연결<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<p>step 1. ssh 키 생성<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;i.kkongnyang2@gmail.com&quot;</span>
+</code></pre></div></p>
 <ul>
 <li><code>ssh-keygen</code> : 공개키/비밀키 쌍 생성. 각각 ~/.ssh/id_ed25519.pub과 ~/.ssh/id_ed25519에 저장</li>
 <li><code>-t ed25519</code> : 키 타입을 ED25519 방식으로 지정 (현대식)</li>
@@ -694,77 +683,71 @@
 <li><code>randomart</code> : 키의 무작위 시각화</li>
 <li>비밀키 = 내 서명, 공개키 = 자물쇠. 서버에 자물쇠를 갖다놓고 내 서명을 전송하면 인증되는 방식.</li>
 </ul>
-<p>출력:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">Generating</span><span class="w"> </span><span class="k">public</span><span class="o">/</span><span class="n">private</span><span class="w"> </span><span class="n">ed25519</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">pair</span><span class="p">.</span>
-<span class="n">Enter</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">save</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">kkongnyang2</span><span class="o">/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_ed25519</span><span class="p">)</span><span class="err">:</span><span class="w"> </span>
-<span class="n">Created</span><span class="w"> </span><span class="n">directory</span><span class="w"> </span><span class="s1">&#39;/home/kkongnyang2/.ssh&#39;</span><span class="p">.</span>
-<span class="n">Enter</span><span class="w"> </span><span class="n">passphrase</span><span class="w"> </span><span class="p">(</span><span class="n">empty</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="n">passphrase</span><span class="p">)</span><span class="err">:</span><span class="w"> </span>
-<span class="n">Enter</span><span class="w"> </span><span class="n">same</span><span class="w"> </span><span class="n">passphrase</span><span class="w"> </span><span class="nl">again</span><span class="p">:</span><span class="w"> </span>
-<span class="n">Your</span><span class="w"> </span><span class="n">identification</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">saved</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">kkongnyang2</span><span class="o">/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_ed25519</span>
-<span class="n">Your</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">has</span><span class="w"> </span><span class="n">been</span><span class="w"> </span><span class="n">saved</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">kkongnyang2</span><span class="o">/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_ed25519</span><span class="p">.</span><span class="n">pub</span>
-<span class="n">The</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="n">fingerprint</span><span class="w"> </span><span class="k">is</span><span class="err">:</span>
-<span class="nl">SHA256</span><span class="p">:</span><span class="n">BN5rnq1LOEF9Td6r9xN5</span><span class="o">/</span><span class="mi">8</span><span class="n">ua11oIMDjt2FkYS40Y</span><span class="o">+</span><span class="n">iU</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">kkongnyang2</span><span class="nv">@gmail</span><span class="p">.</span><span class="n">com</span>
-<span class="n">The</span><span class="w"> </span><span class="k">key</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="n">randomart</span><span class="w"> </span><span class="nc">image</span><span class="w"> </span><span class="k">is</span><span class="err">:</span>
-<span class="o">+</span><span class="c1">--[ED25519 256]--+</span>
-<span class="o">|</span><span class="w">      </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="n">ooo</span><span class="p">.</span><span class="w">    </span><span class="o">|</span>
-<span class="o">|</span><span class="w">     </span><span class="p">.</span><span class="w"> </span><span class="o">=</span><span class="p">.</span><span class="o">+</span><span class="p">.</span><span class="n">B</span><span class="p">..</span><span class="w">   </span><span class="o">|</span>
-<span class="o">|</span><span class="w">      </span><span class="o">+</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">O</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">.</span><span class="w">  </span><span class="o">|</span>
-<span class="o">|</span><span class="w">     </span><span class="p">.</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">=</span><span class="w">   </span><span class="p">.</span><span class="w"> </span><span class="o">|</span>
-<span class="o">|</span><span class="w">      </span><span class="p">.</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="o">|</span>
-<span class="o">|</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="w">   </span><span class="n">o</span><span class="w"> </span><span class="o">+</span><span class="p">.</span><span class="o">|</span>
-<span class="o">|</span><span class="w">      </span><span class="n">o</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="o">*|</span>
-<span class="o">|</span><span class="w">       </span><span class="n">o</span><span class="w"> </span><span class="p">.</span><span class="w">   </span><span class="p">.</span><span class="n">o</span><span class="o">=</span><span class="n">o</span><span class="o">|</span>
-<span class="o">|</span><span class="w">        </span><span class="n">o</span><span class="p">.</span><span class="w">   </span><span class="n">o</span><span class="o">++*|</span>
-<span class="o">+</span><span class="c1">----[SHA256]-----+</span>
-</code></pre></div>
-
-<p>step 2. ssh 키 가져오기</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>cat<span class="w"> </span>~/.ssh/id_ed25519.pub
-</code></pre></div>
-
-<p>출력:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">ssh</span><span class="o">-</span><span class="n">ed25519</span><span class="w"> </span><span class="n">AAAAC3NzaC1lZDI1NTE5AAAAIAEbkGW</span><span class="o">/</span><span class="n">CYdYgUkksfsXEMclE2CNaf1mkxH8NqE8</span><span class="o">/</span><span class="mi">5</span><span class="n">oC</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">kkongnyang2</span><span class="nv">@gmail</span><span class="p">.</span><span class="n">com</span>
-</code></pre></div>
-
+<p>출력:<br />
+<div class="highlight"><pre><span></span><code>Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/kkongnyang2/.ssh/id_ed25519): 
+Created directory &#39;/home/kkongnyang2/.ssh&#39;.
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/kkongnyang2/.ssh/id_ed25519
+Your public key has been saved in /home/kkongnyang2/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:BN5rnq1LOEF9Td6r9xN5/8ua11oIMDjt2FkYS40Y+iU i.kkongnyang2@gmail.com
+The key&#39;s randomart image is:
++--[ED25519 256]--+
+|      . .ooo.    |
+|     . =.+.B..   |
+|      + E O + .  |
+|     . o X =   . |
+|      . S + . . .|
+|       = o   o +.|
+|      o + . . o *|
+|       o .   .o=o|
+|        o.   o++*|
++----[SHA256]-----+
+</code></pre></div></p>
+<p>step 2. ssh 키 가져오기<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>cat<span class="w"> </span>~/.ssh/id_ed25519.pub
+</code></pre></div><br />
+출력:<br />
+<div class="highlight"><pre><span></span><code>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAEbkGW/CYdYgUkksfsXEMclE2CNaf1mkxH8NqE8/5oC i.kkongnyang2@gmail.com
+</code></pre></div></p>
 <p>step 3. ssh 키 입력</p>
 <p>해당 키를 github들어가서 settings-ssh키에 입력</p>
 <hr />
-<h3 id="6">6&gt; 깃허브 연동폴더 생성</h3>
-<p>ubuntu-set/
-├── README.md         ← 작업 파일
-├── main.py           ← 작업 파일
-├── .git/             ← 추적 (숨김 폴더)
-│   ├── config
-│   ├── HEAD
-│   ├── objects/
+<h3 id="6">6&gt; 깃허브 연동폴더 생성<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p>ubuntu-set/<br />
+├── README.md         ← 작업 파일<br />
+├── main.py           ← 작업 파일<br />
+├── .git/             ← 추적 (숨김 폴더)<br />
+│   ├── config<br />
+│   ├── HEAD<br />
+│   ├── objects/<br />
 │   └── ...</p>
-<p>방법 1. 가져오기</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:kkongnyang2/ubuntu-set.git
-</code></pre></div>
-
+<p>방법 1. 가져오기<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>git@github.com:kkongnyang2/ubuntu-set.git
+</code></pre></div></p>
 <ul>
 <li><code>git clone</code> : github에서 받아와 로컬폴더 만들고 git 적용</li>
 <li><code>git@github.com:kkongnyang2/ubuntu-set.git</code> : github의 ssh 주소</li>
 </ul>
-<p>방법 2. 여기서 만들기</p>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>mkdir<span class="w"> </span>ubuntu-set
+<p>방법 2. 여기서 만들기<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>mkdir<span class="w"> </span>ubuntu-set
 ~$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>ubuntu-set
 ~$<span class="w"> </span>git<span class="w"> </span>init
 ~$<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>origin<span class="w"> </span>git@github.com:kkongnyang2/ubuntu-set.git
-</code></pre></div>
-
+</code></pre></div></p>
 <ul>
 <li><code>git init</code> : 지금 있는 로컬폴더에 git을 적용하고 github 용으로 초기화</li>
 <li><code>remote</code> : github 폴더 설정</li>
 <li><code>origin</code> : github 폴더의 기본별명</li>
 </ul>
 <hr />
-<h3 id="7">7&gt; 폴더 변경내용 반영</h3>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
+<h3 id="7">7&gt; 폴더 변경내용 반영<a class="headerlink" href="#7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>git<span class="w"> </span>add<span class="w"> </span>.
 ~$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;2025.06.04.v1&quot;</span>
 ~$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
 </code></pre></div>
-
 <ul>
 <li><code>add</code> : 변경 파일을 git에 추가</li>
 <li><code>.</code> : 전부</li>
@@ -776,58 +759,55 @@
 <li><code>main</code> : 로컬 폴더의 기본별명</li>
 </ul>
 <blockquote>
-<p>⚠️ github 측에서 수정된 게 있다면 꼭 먼저</p>
+<p>⚠️ github 측에서 수정된 게 있다면 꼭 먼저<br />
+<div class="highlight"><pre><span></span><code>~$<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</code></pre></div></p>
 </blockquote>
-<div class="codehilite"><pre><span></span><code>~$<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
-</code></pre></div>
-
 <hr />
-<h3 id="8-github-pages">8&gt; Github pages 블로그 만들기</h3>
+<h3 id="8-github-pages">8&gt; Github pages 블로그 만들기<a class="headerlink" href="#8-github-pages" title="Permanent link">&para;</a></h3>
 <p>step 1. 주의사항</p>
-<p>your-repo/
-├── _config.yml
-├── index.md        ← ✅ 첫 화면에 렌더링됨
-├── about.md        ← ❌ 직접 들어가야 접근됨 (/about)
+<p>your-repo/<br />
+├── _config.yml<br />
+├── index.md        ← ✅ 첫 화면에 렌더링됨<br />
+├── about.md        ← ❌ 직접 들어가야 접근됨 (/about)<br />
 ├── tips.md         ← ❌ 직접 들어가야 접근됨 (/tips)</p>
 <ul>
 <li>따라서 <code>[팁](tips.md)</code>으로 index파일에 모으기</li>
 </ul>
-<p>step 2. 레지스토리 공개로 전환
+<p>step 2. 레지스토리 공개로 전환<br />
 * github - ubuntuset - settings - 공개로 전환</p>
-<p>step 3. source 선택
+<p>step 3. source 선택<br />
 * github - ubuntuset - settings - pages 에 들어가기</p>
 <p>방법 1. deploy from a branch 선택 시 yml 파일을 직접 만들어서 넣어줘야 함. 특정 브랜치 파일을 그대로 페이지로 만들어줌. 브랜치 main, root로 save</p>
-<p>_config.yml</p>
-<div class="codehilite"><pre><span></span><code><span class="n">title</span><span class="o">:</span><span class="w"> </span><span class="err">꽁냥</span><span class="mi">2</span><span class="err">의</span><span class="w"> </span><span class="err">기록</span>
-<span class="n">theme</span><span class="o">:</span><span class="w"> </span><span class="n">minima</span>
-</code></pre></div>
-
+<p>_config.yml<br />
+<div class="highlight"><pre><span></span><code>title: 꽁냥2의 기록
+theme: minima
+</code></pre></div></p>
 <p>방법 2. github actions 선택 시 yml 자동화 파일을 제공해줌. 복잡한 커스터마이징.</p>
 <p>step 4. 주소로 들어가기</p>
-<div class="codehilite"><pre><span></span><code>https://kkongnyang2.github.io/ubuntu-set/
+<div class="highlight"><pre><span></span><code>https://kkongnyang2.github.io/ubuntu-set/
 </code></pre></div>
-
 <hr />
-<h3 id="9">9&gt; 마크다운 문법</h3>
+<h3 id="9">9&gt; 마크다운 문법<a class="headerlink" href="#9" title="Permanent link">&para;</a></h3>
 <p>미리보기는 ctrl+shift+v</p>
-<div class="codehilite"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="n">header</span>
-<span class="err">##</span><span class="w"> </span><span class="n">header2</span>
-<span class="err">###</span><span class="w"> </span><span class="n">header3</span>
-<span class="n">text1</span>
-<span class="n">text2</span>
-<span class="o">**</span><span class="n">굵게</span><span class="o">**</span>
-<span class="o">*</span><span class="n">기울임</span><span class="o">*</span>
-<span class="o">**</span><span class="n">_굵고</span><span class="w"> </span><span class="n">기울임_</span><span class="o">**</span>
-<span class="mf">1.</span><span class="w"> </span><span class="n">가나다</span>
-<span class="mf">2.</span><span class="w"> </span><span class="n">가나</span>
-<span class="o">*</span><span class="w"> </span><span class="n">가나다</span>
-<span class="o">*</span><span class="w"> </span><span class="n">가나</span>
-<span class="o">-</span><span class="w"> </span><span class="o">[</span><span class="n">x</span><span class="o">]</span><span class="w"> </span><span class="n">완료한</span><span class="w"> </span><span class="n">일</span>
-<span class="o">&gt;</span><span class="w"> </span><span class="n">인용</span>
-<span class="c1">---</span>
-<span class="err">`</span><span class="n">인라인</span><span class="w"> </span><span class="n">강조</span><span class="err">`</span>
-<span class="o">[</span><span class="n">링크</span><span class="o">]</span><span class="p">(</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="p">)</span>
-<span class="err">!</span><span class="o">[</span><span class="n">이미지</span><span class="o">]</span><span class="p">(</span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="nc">image</span><span class="p">.</span><span class="n">png</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code># header
+## header2
+### header3
+text1
+text2
+**굵게**
+*기울임*
+**_굵고 기울임_**
+1. 가나다
+2. 가나
+* 가나다
+* 가나
+- [x] 완료한 일
+&gt; 인용
+---
+`인라인 강조`
+[링크](https://example.com)
+![이미지](https://example.com/image.png)
 </code></pre></div>
 
 
