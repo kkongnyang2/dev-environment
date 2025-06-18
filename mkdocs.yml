@@ -2,12 +2,17 @@ site_name: dev-environment
 theme:
   name: material
 nav:                    #사이드바 목차
-  - 이론: 0-os.md
+  - study: 0-study.md
   - setup: 1-setup.md
   - keyboard: 2-keyboard.md
   - code: 3-code.md
 docs_dir: docs          #기본값은 docs. 따라서 안써도 되지만 그냥 명시
 site_dir: site          #기본값은 site. 따라서 안써도 되지만 그냥 명시
 markdown_extensions:
-  - toc
-  - codehilite
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.extra
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - nl2br       # ← 줄바꿈 자동 처리
