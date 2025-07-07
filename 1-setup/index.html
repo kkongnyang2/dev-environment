@@ -9,22 +9,25 @@
       
       
       
-        <link rel="prev" href="../0-study/">
+        <link rel="prev" href="..">
       
       
         <link rel="next" href="../2-keyboard/">
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <link rel="icon" href="../logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>setup - dev-environment</title>
+        <title>1 setup - Dev-Environment</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -38,10 +41,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../soft-era.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -53,7 +58,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="apple" data-md-color-primary="white" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -74,14 +86,11 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="dev-environment" class="md-header__button md-logo" aria-label="dev-environment" data-md-component="logo">
+    <a href="../.." title="Dev-Environment" class="md-header__button md-logo" aria-label="Dev-Environment" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <img src="../logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -92,18 +101,44 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            dev-environment
+            Dev-Environment
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              setup
+              1 setup
             
           </span>
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="apple" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Soft Era"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Soft Era" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.71 4.63-1.34-1.34c-.37-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.04 0-1.41M7 14a3 3 0 0 0-3 3c0 1.31-1.16 2-2 2 .92 1.22 2.5 2 4 2a4 4 0 0 0 4-4 3 3 0 0 0-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="soft" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Apple Classic"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Apple Classic" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.71 4.63-1.34-1.34c-.37-.39-1.02-.39-1.41 0L9 12.25 11.75 15l8.96-8.96c.39-.39.39-1.04 0-1.41M7 14a3 3 0 0 0-3 3c0 1.31-1.16 2-2 2 .92 1.22 2.5 2 4 2a4 4 0 0 0 4-4 3 3 0 0 0-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
       <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
@@ -160,6 +195,93 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  1 setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../2-keyboard/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  2 keyboard
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../3-code/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  3 code
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -173,16 +295,17 @@
                     
 
 
-
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href=".." title="dev-environment" class="md-nav__button md-logo" aria-label="dev-environment" data-md-component="logo">
-      
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Dev-Environment" class="md-nav__button md-logo" aria-label="Dev-Environment" data-md-component="logo">
+      
+  <img src="../logo.svg" alt="logo">
 
     </a>
-    dev-environment
+    Dev-Environment
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -194,12 +317,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../0-study/" class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    study
+    Home
     
   </span>
   
@@ -228,7 +351,7 @@
   
   
   <span class="md-ellipsis">
-    setup
+    1 setup
     
   </span>
   
@@ -241,7 +364,7 @@
   
   
   <span class="md-ellipsis">
-    setup
+    1 setup
     
   </span>
   
@@ -350,7 +473,7 @@
   
   
   <span class="md-ellipsis">
-    keyboard
+    2 keyboard
     
   </span>
   
@@ -372,7 +495,7 @@
   
   
   <span class="md-ellipsis">
-    code
+    3 code
     
   </span>
   
@@ -491,13 +614,13 @@
 
 
 
-  <h1>setup</h1>
+  <h1>1 setup</h1>
 
-<h2 id="ubuntu-2204-desktop-amd64iso">Ubuntu-22.04-desktop-amd64.iso 설치 가이드<a class="headerlink" href="#ubuntu-2204-desktop-amd64iso" title="Permanent link">&para;</a></h2>
-<h3 id="os">목표: 듀얼 OS 설치<a class="headerlink" href="#os" title="Permanent link">&para;</a></h3>
+<h2 id="ubuntu-2204-desktop-amd64iso">Ubuntu-22.04-desktop-amd64.iso 설치 가이드</h2>
+<h3 id="os">목표: 듀얼 OS 설치</h3>
 <p>작성자: kkongnyang2 작성일: 2025-06-04</p>
 <hr />
-<h3 id="0">0&gt; 환경 점검<a class="headerlink" href="#0" title="Permanent link">&para;</a></h3>
+<h3 id="0">0&gt; 환경 점검</h3>
 <p>하드웨어: 삼성 노트북<br />
 ├─cpu: i5-10th amd64<br />
 ├─ram: 8GB<br />
@@ -505,7 +628,7 @@
 운영체제: window 11 home<br />
 외부 저장장치: 32GB usb(임시용)</p>
 <hr />
-<h3 id="1-usb">1&gt; 부팅 usb 만들기<a class="headerlink" href="#1-usb" title="Permanent link">&para;</a></h3>
+<h3 id="1-usb">1&gt; 부팅 usb 만들기</h3>
 <p>step 1. ubuntu-22.04-desktop-amd64.iso 다운받기<br />
 step 2. rufus 다운로드<br />
 step 3. rufus로 해당 iso 이미지를 usb에 굽기<br />
@@ -513,14 +636,14 @@ step 3. rufus로 해당 iso 이미지를 usb에 굽기<br />
 * 영구저장공간. usb로 디스크 설치 없이 live 부팅할때 변경사항을 usb에 저장하는 할당 공간.<br />
 * FAT32. 32bit주소체계 파일 주소록. 대부분의 EFI System Partition이 사용.</p>
 <hr />
-<h3 id="2">2&gt; 설치하기<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<h3 id="2">2&gt; 설치하기</h3>
 <p>step 1. F10으로 부팅 페이지 들어가기<br />
 step 2. usb 선택<br />
 step 3. try or install 우분투 클릭<br />
 * try : live 부팅. 디스크 설치 없이 usb에서 램에 올려서 사용.</p>
 <p>step 4. 파티션 배분 후 설치 완료</p>
 <hr />
-<h3 id="3">3&gt; 점검<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<h3 id="3">3&gt; 점검</h3>
 <p>step 1. 듀얼부팅에서 우분투 선택해서 키기<br />
 step 2. 파티션 확인<br />
 <div class="highlight"><pre><span></span><code>~$<span class="w"> </span>lsblk<span class="w"> </span>-f
@@ -536,7 +659,7 @@ step 2. 파티션 확인<br />
 </code></pre></div><br />
 * 설치가능한 목록. 아무것도 안뜨면 굿.</p>
 <hr />
-<h3 id="4">4&gt; 기본 명령어좀요<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<h3 id="4">4&gt; 기본 명령어좀요</h3>
 <p>ctrl+alt+t : 터미널</p>
 <p>~ : home. /home의 줄임말<br />
 cd : 상위 디렉토리로<br />
@@ -614,10 +737,10 @@ sudo : 관리자 권한</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "content.code.copy", "header.autohide"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   </body>
