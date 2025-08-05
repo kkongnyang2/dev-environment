@@ -1,60 +1,51 @@
-## Ubuntu-22.04-desktop-amd64.iso 설치 가이드
+## 우분투 설치
 
-### 목표: 듀얼 OS 설치
 작성자: kkongnyang2 작성일: 2025-06-04
 
 ---
-### 0> 환경 점검
+### 부팅 usb 만들기
 
-하드웨어: 삼성 노트북
-├─cpu: i5-10th amd64
-├─ram: 8GB
-└─ssd: 256GB
-운영체제: window 11 home
-외부 저장장치: 32GB usb(임시용)
-
----
-### 1> 부팅 usb 만들기
-step 1. ubuntu-22.04-desktop-amd64.iso 다운받기
-step 2. rufus 다운로드
-step 3. rufus로 해당 iso 이미지를 usb에 굽기
+ubuntu-22.04-desktop-amd64.iso 다운받기
+rufus 다운로드
+rufus로 해당 iso 이미지를 usb에 굽기
 * mbr/gpt. mbr은 파티션 적은 구버전(bios호환), gpt는 신버전(ufei호환).
 * 영구저장공간. usb로 디스크 설치 없이 live 부팅할때 변경사항을 usb에 저장하는 할당 공간.
 * FAT32. 32bit주소체계 파일 주소록. 대부분의 EFI System Partition이 사용.
 
 ---
-### 2> 설치하기
-step 1. F10으로 부팅 페이지 들어가기
-step 2. usb 선택
-step 3. try or install 우분투 클릭
+### 설치하기
+
+F10으로 부팅 페이지 들어가기
+usb 선택
+try or install 우분투 클릭
 * try : live 부팅. 디스크 설치 없이 usb에서 램에 올려서 사용.
 
 step 4. 파티션 배분 후 설치 완료
 
 ----
-### 3> 점검
-step 1. 듀얼부팅에서 우분투 선택해서 키기
-step 2. 파티션 확인
-```bash
-~$ lsblk -f
+### 점검
+
+듀얼부팅에서 우분투 선택해서 키기
+파티션 확인
+```
+$ lsblk -f
 ```
 * `-f` : 파일 시스템 정보
 
+패키지 최신상태 확인
 ```
-step 3. 패키지 최신상태 확인
-```bash
-~$ sudo apt update && sudo apt upgrade -y
+$ sudo apt update && sudo apt upgrade -y
 ```
 * &&는 명령어 연속. -y는 자동 yes
 
-step 4. 드라이버 확인
-```bash
-~$ sudo ubuntu-drivers devices
+드라이버 확인
+```
+$ sudo ubuntu-drivers devices
 ```
 * 설치가능한 목록. 아무것도 안뜨면 굿.
 
 ---
-### 4> 기본 명령어좀요
+### 기본 명령어
 
 ctrl+alt+t : 터미널
 

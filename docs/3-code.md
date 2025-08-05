@@ -1,28 +1,17 @@
-## Vscode 1.100.2 설치와 Github 연결
+## Vscode 설치와 Github 연결
 
-### 목표: 코딩 환경 세팅
 작성자: kkongnyang2 작성일: 2025-06-04
 
 ---
-### 0> 환경 점검
-
-하드웨어: 삼성 노트북
-├─cpu: i5-10th amd64
-├─ram: 8GB
-└─ssd: 256GB
-운영체제: ubuntu-22.04.5-desktop-amd64
-외부 저장장치: 없음
-
----
-### 1> vscode 설치
+### vscode 설치
 
 * snap으로 설치하면 ibus와의 호환 이슈. deb방식으로 설치 필요.
 
-step 1. apt에 vscode 등록
-```bash
-~$ wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-~$ sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
-~$ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+apt에 vscode 등록
+```
+$ wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+$ sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+$ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 ```
 
 "vscode 인증키와 링크 받아와서 내 apt에 등록"
@@ -46,26 +35,26 @@ step 1. apt에 vscode 등록
 * `/etc/apt/sources.list.d/vscode.list` : apt 소스 리스트
 * 즉 세번째 코드는 링크를 apt 소스 리스트에 등록해라.
 
-step 2. vs code 설치
-```bash
-~$ sudo apt update
-~$ sudo apt install code
+vscode 설치
+```
+$ sudo apt update
+$ sudo apt install code
 ```
 
-step 3. 설치 위치 확인
-```bash
-~$ which code
+설치 위치 확인
+```
+$ which code
 /usr/bin/code                 #deb형식으로 잘 깔림
 ```
 
-step 4. 실행
+실행
 ```bash
-~$ code
+$ code
 ```
 * code는 그냥 런쳐실행, code .은 현재 폴더 실행, code ~/..는 해당 폴더를 프로젝트로 열기
 
 ---
-### 2> vscode 폴더 이해
+### vscode 폴더 이해
 
 my-project/
 ├── .vscode/
@@ -77,7 +66,7 @@ my-project/
 └── README.md
 
 ---
-### 3> 워크스페이스 파일 이해
+### 워크스페이스 파일 이해
 
 my-project.code-workspace  ← 여러 폴더 묶는 워크스페이스 파일 (선택적)
 {
@@ -91,28 +80,28 @@ my-project.code-workspace  ← 여러 폴더 묶는 워크스페이스 파일 (�
 }
 
 ---
-### 4> 깃 설치
+### 깃 설치
 
-step 1. git 설치
-```bash
+git 설치
+```
 ~$ sudo apt install git
 ```
 
-step 2. 사용자 정보 입력
-```bash
-~$ git config --global user.name "kkongnyang2"
-~$ git config --global user.email "i.kkongnyang2@gmail.com"
+사용자 정보 입력
+```
+$ git config --global user.name "kkongnyang2"
+$ git config --global user.email "i.kkongnyang2@gmail.com"
 ```
 * `config` : git의 설정 정보 수정
 * `--global` : 모든 git 저장소에 적용
 * `user.name` : 커밋할때 적히는 작성자 이름
 
 ---
-### 5> 깃허브 연결
+### 깃허브 연결
 
-step 1. ssh 키 생성
-```bash
-~$ ssh-keygen -t ed25519 -C "i.kkongnyang2@gmail.com"
+ssh 키 생성
+```
+$ ssh-keygen -t ed25519 -C "i.kkongnyang2@gmail.com"
 ```
 
 * `ssh-keygen` : 공개키/비밀키 쌍 생성. 각각 ~/.ssh/id_ed25519.pub과 ~/.ssh/id_ed25519에 저장
@@ -148,21 +137,21 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-step 2. ssh 키 가져오기
-```bash
-~$ cat ~/.ssh/id_ed25519.pub
+ssh 키 가져오기
+```
+$ cat ~/.ssh/id_ed25519.pub
 ```
 출력:
 ```
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAEbkGW/CYdYgUkksfsXEMclE2CNaf1mkxH8NqE8/5oC i.kkongnyang2@gmail.com
 ```
 
-step 3. ssh 키 입력
+ssh 키 입력
 
 해당 키를 github들어가서 settings-ssh키에 입력
 
 ---
-### 6> 깃허브 연동폴더 생성
+### 깃허브 연동폴더 생성
 
 ubuntu-set/
 ├── README.md         ← 작업 파일
@@ -174,19 +163,19 @@ ubuntu-set/
 │   └── ...
 
 방법 1. 가져오기
-```bash
-~$ git clone git@github.com:kkongnyang2/ubuntu-set.git
+```
+$ git clone git@github.com:kkongnyang2/ubuntu-set.git
 ```
 
 * `git clone` : github에서 받아와 로컬폴더 만들고 git 적용
 * `git@github.com:kkongnyang2/ubuntu-set.git` : github의 ssh 주소
 
 방법 2. 여기서 만들기
-```bash
-~$ mkdir ubuntu-set
-~$ cd ubuntu-set
-~$ git init
-~$ git remote add origin git@github.com:kkongnyang2/ubuntu-set.git
+```
+$ mkdir ubuntu-set
+$ cd ubuntu-set
+$ git init
+$ git remote add origin git@github.com:kkongnyang2/ubuntu-set.git
 ```
 
 * `git init` : 지금 있는 로컬폴더에 git을 적용하고 github 용으로 초기화
@@ -194,12 +183,12 @@ ubuntu-set/
 * `origin` : github 폴더의 기본별명
 
 ---
-### 7> 폴더 변경내용 반영
+### 폴더 변경내용 반영
 
-```bash
-~$ git add .
-~$ git commit -m "2025.06.04.v1"
-~$ git push -u origin main
+```
+$ git add .
+$ git commit -m "2025.06.04.v1"
+$ git push -u origin main
 ```
 
 * `add` : 변경 파일을 git에 추가
@@ -217,9 +206,7 @@ ubuntu-set/
 ```
 
 ---
-### 8> Github pages 블로그 만들기
-
-step 1. 주의사항
+### Github pages 블로그 만들기
 
 your-repo/
 ├── _config.yml
@@ -229,11 +216,15 @@ your-repo/
 
 * 따라서 `[팁](tips.md)`으로 index파일에 모으기
 
-step 2. 레지스토리 공개로 전환
-* github - ubuntuset - settings - 공개로 전환
+레지스토리 공개로 전환
+```
+github - ubuntuset - settings - 공개로 전환
+```
 
-step 3. source 선택
-* github - ubuntuset - settings - pages 에 들어가기
+source 선택
+```
+github - ubuntuset - settings - pages 에 들어가기
+```
 
 방법 1. deploy from a branch 선택 시 yml 파일을 직접 만들어서 넣어줘야 함. 특정 브랜치 파일을 그대로 페이지로 만들어줌. 브랜치 main, root로 save
 
@@ -245,14 +236,8 @@ theme: minima
 
 방법 2. github actions 선택 시 yml 자동화 파일을 제공해줌. 복잡한 커스터마이징.
 
-step 4. 주소로 들어가기
-
-```
-https://kkongnyang2.github.io/ubuntu-set/
-```
-
 ---
-### 9> 마크다운 문법
+### 마크다운 문법
 
 미리보기는 ctrl+shift+v
 

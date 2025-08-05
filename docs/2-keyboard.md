@@ -1,20 +1,9 @@
-## Ubuntu-22.04-desktop 키보드 커스터마이징
+## 키보드 설정
 
-### 목표: I/O 장치의 이해
 작성자: kkongnyang2 작성일: 2025-06-04
 
 ---
-### 0> 환경 점검
-
-하드웨어: 삼성 노트북
-├─cpu: i5-10th amd64
-├─ram: 8GB
-└─ssd: 256GB
-운영체제: ubuntu-22.04.5-desktop-amd64
-외부 저장장치: 없음
-
----
-### 1> 입력기 시스템 어떻게 되어있나요
+### 입력기 시스템 어떻게 되어있나요
 
 [1] 하드웨어 | 키보드 자체
  ↓
@@ -47,69 +36,61 @@
 * `-v`: 제외
 
 ---
-### 2> ibus-hangul 설치
+### ibus-hangul 설치
 
-step 1. 설치
-```bash
-~$ sudo apt install ibus-hangul
+설치
 ```
-step 2. ibus 재시작하기
-```bash
-~$ ibus restart
-~$ ibus-daemon -drx
+$ sudo apt install ibus-hangul
+```
+ibus 재시작하기
+```
+$ ibus restart
+$ ibus-daemon -drx
 ```
 * `-d`: 백그라운드 데몬으로 실행 `-r`: 리셋 `-x`: X 모드로 실행
 
-step 3. ibus-hangul 설치 여부 확인
-```bash
-~$ dpkg -l | grep ibus-hangul
+ibus-hangul 설치 여부 확인
+```
+$ dpkg -l | grep ibus-hangul
 ```
 * `dpkg -l`: 현재 설치된 모든 패키지 목록
 * `grep`: 검색
 
-step 4. ibus 목록 확인하기:
-```bash
-~$ ibus list-engine
+ibus 목록 확인하기:
 ```
-step 5. Gnome 에서 추가
-```bash
-~$ gnome-control-center keyboard
+$ ibus list-engine
+```
+Gnome 에서 추가
+```
+$ gnome-control-center keyboard
 입력기 전환 키 삭제
 input sources에서 기본 영어 키보드 삭제
 input sources에서 ibus-hangul 입력기 추가 (안에 영어 한글 다잇음)
 ```
-step 6. ibus 에도 등록
+ibus 에도 등록
 
-Gnome에 이미 ibus-hangul 엔진을 추가했기에 하지 않아도 작동하지만, 안정성을 위해.
-```bash
-~$ ibus-setup
+```
+$ ibus-setup
 입력기 전환 키 삭제
 ibus-hangul 추가
 한영 토글 키 hangul키로 설정
 ```
 
-> ⚠️ gnome 영향안받고 ibus만 입력기로 쓸거라면:
-```bash
-~$ echo 'GTK_IM_MODULE=ibus
-~$ QT_IM_MODULE=ibus
-~$ XMODIFIERS=@im=ibus' >> ~/.profile
-```
-
 ---
-### 3> 키 매핑 변경
+### 키 매핑 변경
 
-```bash
-~$ sudo gedit /usr/share/X11/xkb/keycodes/evdev
+```
+$ sudo gedit /usr/share/X11/xkb/keycodes/evdev
 ```
 
 원본:
-```xkb
+```
 <RALT> = 108;
 <HNGL> = 130;
 ```
 
 수정:
-```xkb
+```
 <HNGL> = 108;
 ```
 
@@ -117,27 +98,27 @@ ibus-hangul 추가
 * 원본은 전부 before로 표기해두니 필요하면 ctrl+f로 찾아라
 
 ---
-### 4> z(keycode 52) 저수준 차단하기
+### z(keycode 52) 저수준 차단하기
 
-기존 키맵 복사:
+기존 키맵 복사
 ```bash
-~$ sudo cp /usr/share/X11/xkb/symbols/us ~/.XkbSymbols_us
-~$ gedit ~/.XkbSymbols_us
+$ sudo cp /usr/share/X11/xkb/symbols/us ~/.XkbSymbols_us
+$ gedit ~/.XkbSymbols_us
 ```
 
-원본:
+원본
 ```xkb
 key <AB03> { [ z, Z ] };;
 ```
 
-수정:
+수정
 ```xkb
 key <AB03> { [ NoSymbol, NoSymbol ] };
 ```
 
-반영:
-```bash
-~$ setxkbmap -I$HOME -layout us
+반영
+```
+$ setxkbmap -I$HOME -layout us
 ```
 
 * `setxkbmap`: X 맵 설정
