@@ -22,13 +22,13 @@
 * gnome은 마스터 컨트롤러 같은 존재. 각 애들한테 명령을 내림.
 * ibus는 그저 입력기 프로그램이기 때문에 gnome의 요청없이 그 상위계층에 입출력을 전달할 수가 없다.
 
-```bash
-~$ echo $XDG_SESSION_TYPE         #디스플레이 서버 확인
-~$ echo $XMODIFIERS               #프레임워크 확인
-~$ ibus list-engine               #엔진 종류 확인
-~$ ps aux | grep -E 'ibus|fcitx|uim' | grep -v grep   #입력기 데몬 확인
-~$ xev                            #키 매핑 확인
-~$ sudo libinput debug-events     #입력 흐름 확인
+```
+$ echo $XDG_SESSION_TYPE         #디스플레이 서버 확인
+$ echo $XMODIFIERS               #프레임워크 확인
+$ ibus list-engine               #엔진 종류 확인
+$ ps aux | grep -E 'ibus|fcitx|uim' | grep -v grep   #입력기 데몬 확인
+$ xev                            #키 매핑 확인
+$ sudo libinput debug-events     #입력 흐름 확인
 ```
 * `ps aux`: 모든 사용자와 프로세스 출력
 * `grep`: 찾기
@@ -101,18 +101,18 @@ $ sudo gedit /usr/share/X11/xkb/keycodes/evdev
 ### z(keycode 52) 저수준 차단하기
 
 기존 키맵 복사
-```bash
+```
 $ sudo cp /usr/share/X11/xkb/symbols/us ~/.XkbSymbols_us
 $ gedit ~/.XkbSymbols_us
 ```
 
 원본
-```xkb
+```
 key <AB03> { [ z, Z ] };;
 ```
 
 수정
-```xkb
+```
 key <AB03> { [ NoSymbol, NoSymbol ] };
 ```
 
