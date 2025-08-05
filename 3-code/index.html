@@ -514,9 +514,27 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      ssh?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      깃허브 ssh 연결
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      깃허브 연결
+      깃허브 연동폴더
     </span>
   </a>
   
@@ -524,15 +542,6 @@
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      깃허브 연동폴더 생성
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       폴더 변경내용 반영
     </span>
@@ -550,7 +559,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       마크다운 문법
     </span>
@@ -642,9 +651,27 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      ssh?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      깃허브 ssh 연결
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      깃허브 연결
+      깃허브 연동폴더
     </span>
   </a>
   
@@ -652,15 +679,6 @@
         
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      깃허브 연동폴더 생성
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       폴더 변경내용 반영
     </span>
@@ -678,7 +696,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       마크다운 문법
     </span>
@@ -751,7 +769,7 @@ $ sudo apt install code
 /usr/bin/code                 #deb형식으로 잘 깔림
 </code></pre></div></p>
 <p>실행<br />
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>code
+<div class="highlight"><pre><span></span><code>$ code
 </code></pre></div><br />
 * code는 그냥 런쳐실행, code .은 현재 폴더 실행, code ~/..는 해당 폴더를 프로젝트로 열기</p>
 <hr />
@@ -779,7 +797,7 @@ $ sudo apt install code
 <hr />
 <h3 id="_2">깃 설치</h3>
 <p>git 설치<br />
-<div class="highlight"><pre><span></span><code>~$ sudo apt install git
+<div class="highlight"><pre><span></span><code>$ sudo apt install git
 </code></pre></div></p>
 <p>사용자 정보 입력<br />
 <div class="highlight"><pre><span></span><code>$ git config --global user.name &quot;kkongnyang2&quot;
@@ -789,7 +807,26 @@ $ git config --global user.email &quot;i.kkongnyang2@gmail.com&quot;
 * <code>--global</code> : 모든 git 저장소에 적용<br />
 * <code>user.name</code> : 커밋할때 적히는 작성자 이름</p>
 <hr />
-<h3 id="_3">깃허브 연결</h3>
+<h3 id="ssh">ssh?</h3>
+<p>네트워크를 통한 다른 컴퓨터 원격 접속 프로토콜.<br />
+주로 원격 접속, 파일 전송 용도</p>
+<p>서버 신뢰성<br />
+<div class="highlight"><pre><span></span><code>1. 서버는 /etc/ssh/ssh_host_ed25519_key와 그.pub에 ssh-ed25519, ssh-rsa, ecdsa-sha2-nistp256 세 개의 host key의 공개키-개인키를 준비해 둠.
+2. 클라이언트가 접속하면, 서버는 자신의 host key의 공개키를 제시하고 개인키로 서명하여 본인 인증도 함께 보냄
+3. 클라이언트는 ~/.ssh/known_hosts를 참고하여 예전과 동일한 키인지 확인함
+4. 없으면 새로 추가하고, 동일하면 &quot;이 서버는 내가 알던 서버다&quot; = MITM(중간자 공격) 방지
+</code></pre></div></p>
+<p>로그인<br />
+<div class="highlight"><pre><span></span><code>1. 클라이언트는 ssh-keygen -t ed25519로 개인키(열쇠), 공개키(자물쇠)를 쌍으로 생성
+2. 공개키는 ~/.ssh/id_ed25519.pub에 ssh-ed25519 | base64로 인코딩된 키 100자 정도 | 주석 형식으로 저장.
+3. 개인키는 ~/.ssh/id_ed25519에 -----BEGIN OPENSSH PRIVATE KEY-----base64로 인코딩된 키 400~800자-----END OPENSSH PRIVATE KEY----- 형식으로 저장.
+4. 공개키를 서버에 직접 적어놔 이를 로그인용 authorized_key로 만듦. 이때 보통 SHA256(공개키를 요약한 fingerprint)로 간단히 표기됨.
+5. 서버에 로그인할때마다 공개키를 제시하고 개인키로 서명하여 본인 인증도 함께 보냄.
+6. 서버는 공개키 목록을 보고 있는지 확인함.
+</code></pre></div><br />
+* 비밀번호 로그인으로 대체 가능</p>
+<hr />
+<h3 id="ssh_1">깃허브 ssh 연결</h3>
 <p>ssh 키 생성<br />
 <div class="highlight"><pre><span></span><code>$ ssh-keygen -t ed25519 -C &quot;i.kkongnyang2@gmail.com&quot;
 </code></pre></div></p>
@@ -834,7 +871,7 @@ The key&#39;s randomart image is:
 <p>ssh 키 입력</p>
 <p>해당 키를 github들어가서 settings-ssh키에 입력</p>
 <hr />
-<h3 id="_4">깃허브 연동폴더 생성</h3>
+<h3 id="_3">깃허브 연동폴더</h3>
 <p>ubuntu-set/<br />
 ├── README.md         ← 작업 파일<br />
 ├── main.py           ← 작업 파일<br />
@@ -862,7 +899,7 @@ $ git remote add origin git@github.com:kkongnyang2/ubuntu-set.git
 <li><code>origin</code> : github 폴더의 기본별명</li>
 </ul>
 <hr />
-<h3 id="_5">폴더 변경내용 반영</h3>
+<h3 id="_4">폴더 변경내용 반영</h3>
 <div class="highlight"><pre><span></span><code>$ git add .
 $ git commit -m &quot;2025.06.04.v1&quot;
 $ git push -u origin main
@@ -905,7 +942,7 @@ theme: minima
 </code></pre></div></p>
 <p>방법 2. github actions 선택 시 yml 자동화 파일을 제공해줌. 복잡한 커스터마이징.</p>
 <hr />
-<h3 id="_6">마크다운 문법</h3>
+<h3 id="_5">마크다운 문법</h3>
 <p>미리보기는 ctrl+shift+v</p>
 <div class="highlight"><pre><span></span><code># header
 ## header2

@@ -642,12 +642,12 @@
 <li>gnome은 마스터 컨트롤러 같은 존재. 각 애들한테 명령을 내림.</li>
 <li>ibus는 그저 입력기 프로그램이기 때문에 gnome의 요청없이 그 상위계층에 입출력을 전달할 수가 없다.</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code>~$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$XDG_SESSION_TYPE</span><span class="w">         </span><span class="c1">#디스플레이 서버 확인</span>
-~$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$XMODIFIERS</span><span class="w">               </span><span class="c1">#프레임워크 확인</span>
-~$<span class="w"> </span>ibus<span class="w"> </span>list-engine<span class="w">               </span><span class="c1">#엔진 종류 확인</span>
-~$<span class="w"> </span>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;ibus|fcitx|uim&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>grep<span class="w">   </span><span class="c1">#입력기 데몬 확인</span>
-~$<span class="w"> </span>xev<span class="w">                            </span><span class="c1">#키 매핑 확인</span>
-~$<span class="w"> </span>sudo<span class="w"> </span>libinput<span class="w"> </span>debug-events<span class="w">     </span><span class="c1">#입력 흐름 확인</span>
+<p><div class="highlight"><pre><span></span><code>$ echo $XDG_SESSION_TYPE         #디스플레이 서버 확인
+$ echo $XMODIFIERS               #프레임워크 확인
+$ ibus list-engine               #엔진 종류 확인
+$ ps aux | grep -E &#39;ibus|fcitx|uim&#39; | grep -v grep   #입력기 데몬 확인
+$ xev                            #키 매핑 확인
+$ sudo libinput debug-events     #입력 흐름 확인
 </code></pre></div><br />
 * <code>ps aux</code>: 모든 사용자와 프로세스 출력<br />
 * <code>grep</code>: 찾기<br />
@@ -701,8 +701,8 @@ ibus-hangul 추가
 <hr />
 <h3 id="zkeycode-52">z(keycode 52) 저수준 차단하기</h3>
 <p>기존 키맵 복사<br />
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>/usr/share/X11/xkb/symbols/us<span class="w"> </span>~/.XkbSymbols_us
-$<span class="w"> </span>gedit<span class="w"> </span>~/.XkbSymbols_us
+<div class="highlight"><pre><span></span><code>$ sudo cp /usr/share/X11/xkb/symbols/us ~/.XkbSymbols_us
+$ gedit ~/.XkbSymbols_us
 </code></pre></div></p>
 <p>원본<br />
 <div class="highlight"><pre><span></span><code>key &lt;AB03&gt; { [ z, Z ] };;
