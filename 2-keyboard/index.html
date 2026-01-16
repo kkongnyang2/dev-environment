@@ -478,12 +478,12 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        키보드 설정
+        입력기 설정
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="키보드 설정">
+    <nav class="md-nav" aria-label="입력기 설정">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -524,6 +524,17 @@
     <span class="md-ellipsis">
       
         z(keycode 52) 저수준 차단하기
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        윈도우에서 마우스
       
     </span>
   </a>
@@ -598,12 +609,12 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        키보드 설정
+        입력기 설정
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="키보드 설정">
+    <nav class="md-nav" aria-label="입력기 설정">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -650,6 +661,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        윈도우에서 마우스
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -674,7 +696,7 @@
 
   <h1>2 keyboard</h1>
 
-<h2 id="_1">키보드 설정</h2>
+<h2 id="_1">입력기 설정</h2>
 <p>작성자: kkongnyang2 작성일: 2025-06-04</p>
 <hr />
 <h3 id="_2">입력기 시스템 어떻게 되어있나요</h3>
@@ -708,38 +730,24 @@ $ sudo libinput debug-events     #입력 흐름 확인
 * <code>-v</code>: 제외</p>
 <hr />
 <h3 id="ibus-hangul">ibus-hangul 설치</h3>
-<p>설치<br />
-<div class="highlight"><pre><span></span><code>$ sudo apt install ibus-hangul
+<p><div class="highlight"><pre><span></span><code>$ sudo apt install ibus-hangul
+재부팅
+설정 들어가 hangul 키보드 추가 후 기존 키보드 삭제
 </code></pre></div><br />
-ibus 재시작하기<br />
-<div class="highlight"><pre><span></span><code>$ ibus restart
-$ ibus-daemon -drx
-</code></pre></div><br />
-* <code>-d</code>: 백그라운드 데몬으로 실행 <code>-r</code>: 리셋 <code>-x</code>: X 모드로 실행</p>
+* 더 필요시 토글키 설정, ibus-setup 들어가 reference에 hangul 추가</p>
 <p>ibus-hangul 설치 여부 확인<br />
 <div class="highlight"><pre><span></span><code>$ dpkg -l | grep ibus-hangul
+$ ibus list-engine
 </code></pre></div><br />
 * <code>dpkg -l</code>: 현재 설치된 모든 패키지 목록<br />
 * <code>grep</code>: 검색</p>
-<p>ibus 목록 확인하기:<br />
-<div class="highlight"><pre><span></span><code>$ ibus list-engine
-</code></pre></div><br />
-Gnome 에서 추가<br />
-<div class="highlight"><pre><span></span><code>$ gnome-control-center keyboard
-입력기 전환 키 삭제
-input sources에서 기본 영어 키보드 삭제
-input sources에서 ibus-hangul 입력기 추가 (안에 영어 한글 다잇음)
-</code></pre></div><br />
-ibus 에도 등록</p>
-<div class="highlight"><pre><span></span><code>$ ibus-setup
-입력기 전환 키 삭제
-ibus-hangul 추가
-한영 토글 키 hangul키로 설정
-</code></pre></div>
 <hr />
 <h3 id="_3">키 매핑 변경</h3>
-<div class="highlight"><pre><span></span><code>$ sudo gedit /usr/share/X11/xkb/keycodes/evdev
-</code></pre></div>
+<p>RALT를 HNGL로 설정해야 함<br />
+<div class="highlight"><pre><span></span><code>$ cd /usr/share/X11/xkb/keycodes
+$ sudo cp evdev evdev.bak   # 백업 파일 남겨놓기. 되돌리려면 sudo cp evdev.bak evdev
+$ sudo nano evdev           # 수정
+</code></pre></div></p>
 <p>원본:<br />
 <div class="highlight"><pre><span></span><code>&lt;RALT&gt; = 108;
 &lt;HNGL&gt; = 130;
@@ -771,6 +779,24 @@ $ gedit ~/.XkbSymbols_us
 <li><code>-I$HOME</code> : 커스텀 심볼 파일을 홈 디렉토리에서 우선 찾게함</li>
 <li><code>-layout us</code> : 레이아웃이 us 파일을 기반</li>
 </ul>
+<h3 id="_4">윈도우에서 마우스</h3>
+<div class="highlight"><pre><span></span><code>vxe R1 pro max 마우스는 2.4K 수신기와 4K 수신기가 있음.
+형태는 다섯가지나 가능
+2.4K 수신기
+선+젠더+2.4K 수신기(거리 늘려주기용)
+선+4K 수신기
+유선
+블루투스
+난 2.4K 수신기를 사용하고 있고 변경이 필요하면 https://hub.atk.pro/ 가서 원하는 수신기를 꼽고 원래껀 빼고 페어링해주면 됨.
+
+로지텍 Pro X superlight 마우스는 2.4K 수신기가 있음
+형태는 네가지가 가능
+2.4K 수신기
+선+젠더+2.4K 수신기(거리 늘려주기용)
+유선
+블루투스
+변경이 필요하면 logitech G hub 소프트웨어에서 설정.
+</code></pre></div>
 
 
 
