@@ -1,4 +1,4 @@
-## 키보드 설정
+## 입력기 설정
 
 작성자: kkongnyang2 작성일: 2025-06-04
 
@@ -38,49 +38,29 @@ $ sudo libinput debug-events     #입력 흐름 확인
 ---
 ### ibus-hangul 설치
 
-설치
 ```
 $ sudo apt install ibus-hangul
+재부팅
+설정 들어가 hangul 키보드 추가 후 기존 키보드 삭제
 ```
-ibus 재시작하기
-```
-$ ibus restart
-$ ibus-daemon -drx
-```
-* `-d`: 백그라운드 데몬으로 실행 `-r`: 리셋 `-x`: X 모드로 실행
+* 더 필요시 토글키 설정, ibus-setup 들어가 reference에 hangul 추가
 
 ibus-hangul 설치 여부 확인
 ```
 $ dpkg -l | grep ibus-hangul
+$ ibus list-engine
 ```
 * `dpkg -l`: 현재 설치된 모든 패키지 목록
 * `grep`: 검색
 
-ibus 목록 확인하기:
-```
-$ ibus list-engine
-```
-Gnome 에서 추가
-```
-$ gnome-control-center keyboard
-입력기 전환 키 삭제
-input sources에서 기본 영어 키보드 삭제
-input sources에서 ibus-hangul 입력기 추가 (안에 영어 한글 다잇음)
-```
-ibus 에도 등록
-
-```
-$ ibus-setup
-입력기 전환 키 삭제
-ibus-hangul 추가
-한영 토글 키 hangul키로 설정
-```
-
 ---
 ### 키 매핑 변경
 
+RALT를 HNGL로 설정해야 함
 ```
-$ sudo gedit /usr/share/X11/xkb/keycodes/evdev
+$ cd /usr/share/X11/xkb/keycodes
+$ sudo cp evdev evdev.bak   # 백업 파일 남겨놓기. 되돌리려면 sudo cp evdev.bak evdev
+$ sudo nano evdev           # 수정
 ```
 
 원본:
@@ -124,3 +104,25 @@ $ setxkbmap -I$HOME -layout us
 * `setxkbmap`: X 맵 설정
 * `-I$HOME` : 커스텀 심볼 파일을 홈 디렉토리에서 우선 찾게함
 * `-layout us` : 레이아웃이 us 파일을 기반
+
+
+### 윈도우에서 마우스
+
+```
+vxe R1 pro max 마우스는 2.4K 수신기와 4K 수신기가 있음.
+형태는 다섯가지나 가능
+2.4K 수신기
+선+젠더+2.4K 수신기(거리 늘려주기용)
+선+4K 수신기
+유선
+블루투스
+난 2.4K 수신기를 사용하고 있고 변경이 필요하면 https://hub.atk.pro/ 가서 원하는 수신기를 꼽고 원래껀 빼고 페어링해주면 됨.
+
+로지텍 Pro X superlight 마우스는 2.4K 수신기가 있음
+형태는 네가지가 가능
+2.4K 수신기
+선+젠더+2.4K 수신기(거리 늘려주기용)
+유선
+블루투스
+변경이 필요하면 logitech G hub 소프트웨어에서 설정.
+```
