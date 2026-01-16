@@ -53,6 +53,13 @@ $ code
 ```
 * code는 그냥 런쳐실행, code .은 현재 폴더 실행, code ~/..는 해당 폴더를 프로젝트로 열기
 
+확장
+```
+extension에서 soft-era 설치
+extension에서 power-mode 설치
+power mode 설정 들어가서 허용 체크, 불꽃으로 선택, 콤보 위치는 editor, 카운팅 보이기, 카운터 사이즈 1.7, threshold 10, timeout 3, 타이머 보이기, 흔들기 허용, 흔들기 강도 1, explosions 허용, 커스텀 gif는 안함
+```
+
 ---
 ### vscode 폴더 이해
 
@@ -192,7 +199,6 @@ ubuntu-set/
 ```
 $ git clone git@github.com:kkongnyang2/ubuntu-set.git
 ```
-
 * `git clone` : github에서 받아와 로컬폴더 만들고 git 적용
 * `git@github.com:kkongnyang2/ubuntu-set.git` : github의 ssh 주소
 
